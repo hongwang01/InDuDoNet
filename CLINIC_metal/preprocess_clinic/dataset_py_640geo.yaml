@@ -1,0 +1,10 @@
+CTpara:
+  imPixNum: 416  #image pixels along x or y direction
+  angSize: 0.05  #angle between two neighbor rays
+  linSize: 1.8536
+  angNum: 640 # number of projection views
+  SOD: 1075  #source-to-origin distance
+  imPixScale: '512 / 416 * 0.03' # '512 / 256 * 0.03'
+  sinogram_size_x: 640
+  sinogram_size_y: 641
+  window: '[-175, 275] / 1000 * 0.192 + 0.192'
