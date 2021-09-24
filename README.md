@@ -59,8 +59,11 @@ CUDA_VISIBLE_DEVICES=0 python test_clinic.py --data_path "CLINIC_metal/test/" --
 ```
 ## Model Verification
 <div  align="center"><img src="figs/visualization.png" height="100%" width="100%" alt=""/></div>
+
 ## Experiments on Synthesized Data
 <div  align="center"><img src="figs/syn.png" height="100%" width="100%" alt=""/></div>
+
+
 ## Experiments on CLINIC-metal
 <div  align="center"><img src="figs/clinic.png" height="100%" width="100%" alt=""/></div>
 
