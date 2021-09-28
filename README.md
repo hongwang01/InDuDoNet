@@ -80,6 +80,7 @@ The authors would like to thank [Dr. Lequan Yu](https://yulequan.github.io/) for
   title={InDuDoNet: An Interpretable Dual Domain Network for CT Metal Artifact Reduction},
   author={Wang, Hong and Li, Yuexiang and Zhang, Haimiao and Chen, Jiawei and Ma, Kai and Meng, Deyu and Zheng, Yefeng},
   booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  pages={107--118},
   year={2021},
   organization={Springer}
 }
