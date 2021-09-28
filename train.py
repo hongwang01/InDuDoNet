@@ -3,7 +3,7 @@
 """
 Created on Tue Nov 5 11:56:06 2020
 @author: hongwang (hongwang01@stu.xjtu.edu.cn)
-MICCAI2021: ``InDuDoNet: A Model-Driven Interpretable Dual Domain Network for CT Metal Artifact Reduction''
+MICCAI2021: ``InDuDoNet: An Interpretable Dual Domain Network for CT Metal Artifact Reduction''
 paper link： https://arxiv.org/pdf/2109.05298.pdf
 """
 from __future__ import print_function
