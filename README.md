@@ -17,6 +17,19 @@ ODL: https://github.com/odlgroup/odl
 Astra: https://github.com/astra-toolbox/astra-toolbox
 
 
+This repository is tested under the following system settings:
+
+Ubuntu 16.04
+Python 3.76
+Pytorch 1.4.0
+CUDA 10.1
+GPU NVIDIA Tesla V100-SMX2
+
+**For running the code,  please first test whether ODL and Astra are both installed correctly. This is quite important.**
+
+
+
+
 ## Folder Directory 
 ```
 .
