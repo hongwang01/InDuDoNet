@@ -19,9 +19,7 @@ Astra: https://github.com/astra-toolbox/astra-toolbox
 
 This repository is tested under the following system settings:
 
-Ubuntu 16.04
-
-Python 3.76
+Python 3.6
 
 Pytorch 1.4.0
 
