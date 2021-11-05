@@ -52,8 +52,8 @@ GPU NVIDIA Tesla V100-SMX2
 ```
 ## Benchmark Dataset
 
-**DeepLesion:** Download the [DeepLesion dataset](https://nihcc.app.box.com/v/DeepLesion) and synthesize the metal-corrupted ones by following the simulation protocol in [1][2]. 
-Note that you can also refer to `bulid_geometory.py` and flexibly finish the data synthesis with `Python`.
+**DeepLesion:** Download the [DeepLesion dataset](https://nihcc.app.box.com/v/DeepLesion) and synthesize the metal-corrupted ones by following the simulation protocol in [1]. 
+The imaging parameters are included in `bulid_geometory.py`.
 
 **CLINIC-metal:** Download the clinical metal-corrupted [CLINIC-metal dataset](https://github.com/ICT-MIRACLE-lab/CTPelvic1K) with mutli-bone segmentation. In our experiments, we only adopt the testing set with 14 volumes for evaluation.
  
@@ -104,7 +104,6 @@ The authors would like to thank [Dr. Lequan Yu](https://yulequan.github.io/) for
 
 [1] Y.   Zhang   and   H.   Yu,   “Convolutional   neural   network   based   metalartifact  reduction  in  X-ray  computed  tomography,”IEEE  Transactionson Medical Imaging, vol. 37, no. 6, pp. 1370–1381, 2018.
 
-[2] H.  Liao,  W.-A.  Lin,  S.  K.  Zhou,  and  J.  Luo,  “ADN:  Artifact  disen-tanglement  network  for  unsupervised  metal  artifact  reduction,”IEEETransactions on Medical Imaging, vol. 39, no. 3, pp. 634–643, 2019.
 
 
 ## Contact
