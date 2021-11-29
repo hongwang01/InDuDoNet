@@ -40,7 +40,7 @@ def proj_get_minmax():
 
 def normalize(data, minmax):
     data_min, data_max = minmax
-    data = np.clip(data, data_min, data_max) # 将数据处理成0-0.5范围
+    data = np.clip(data, data_min, data_max) 
     data = (data - data_min) / (data_max - data_min)
     data = data * 255.0
     data = data.astype(np.float32)
