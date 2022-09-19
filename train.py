@@ -75,8 +75,8 @@ def train_model(net,optimizer, scheduler,datasets):
             loss_l2Xmid = 0
             iter = opt.S -1
             for j in range(iter):
-                loss_l2YSmid = float(loss_l2YSmid) + 0.1 * F.mse_loss(ListYS[j], Sgt)
-                loss_l2Xmid = float(loss_l2Xmid) + 0.1 * F.mse_loss(ListX[j] * (1 - mask), Xgt * (1 - mask))
+                loss_l2YSmid = loss_l2YSmid + 0.1 * F.mse_loss(ListYS[j], Sgt)
+                loss_l2Xmid = loss_l2Xmid + 0.1 * F.mse_loss(ListX[j] * (1 - mask), Xgt * (1 - mask))
             loss_l2YSf = F.mse_loss(ListYS[-1], Sgt)
             loss_l2Xf = F.mse_loss(ListX[-1] * (1 - mask), Xgt * (1 - mask))
             loss_l2YS = loss_l2YSf + loss_l2YSmid
