@@ -52,7 +52,7 @@ def proj_get_minmax():
 
 def normalize(data, minmax):
     data_min, data_max = minmax
-    data = np.clip(data, data_min, data_max) # 将数据处理成0-0.5范围
+    data = np.clip(data, data_min, data_max)
     data = (data - data_min) / (data_max - data_min)
     data = data * 255.0
     data = data.astype(np.float32)
@@ -107,11 +107,11 @@ def main():
     print('Loading model ...\n')
     net = InDuDoNet(opt).cuda()
     print_network("InDuDoNet", net)
-    net.load_state_dict(torch.load(os.path.join(opt.model_dir,'net_latest.pt')))
+    net.load_state_dict(torch.load(opt.model_dir))
     net.eval()
     time_test = 0
     count = 0
-    for imag_idx in range(1):
+    for imag_idx in range(1): # for demo
         print(imag_idx)
         for mask_idx in range(10):
             Xma, XLI, Xgt, M, Sma, SLI, Sgt, Tr = test_image(opt.data_path, imag_idx, mask_idx)

@@ -31,21 +31,22 @@ def normalize(data, minmax):
     return data
 
 class MARTrainDataset(udata.Dataset):
-    def __init__(self, dir, patchSize, length, mask):
+    def __init__(self, dir, patchSize, mask):
         super().__init__()
         self.dir = dir
         self.train_mask = mask
         self.patch_size = patchSize
-        self.sample_num = length
         self.txtdir = os.path.join(self.dir, 'train_640geo_dir.txt')
         self.mat_files = open(self.txtdir, 'r').readlines()
+        self.file_num = len(self.mat_files)
         self.rand_state = RandomState(66)
     def __len__(self):
-        return self.sample_num
+        return self.file_num
 
     def __getitem__(self, idx):
         gt_dir = self.mat_files[idx]
-        random_mask = random.randint(0, 89)  # include 89
+        #random_mask = random.randint(0, 89)  # include 89
+        random_mask = random.randint(0, 9)  # for demo
         file_dir = gt_dir[:-6]
         data_file = file_dir + str(random_mask) + '.h5'
         abs_dir = os.path.join(self.dir, 'train_640geo/', data_file)

@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 """
 Created on Tue Nov 5 11:56:06 2020
-@author: hongwang (hongwang01@stu.xjtu.edu.cn)
+@author: hongwang (hongwang9209@hotmail.com)
 MICCAI2021: ``InDuDoNet: An Interpretable Dual Domain Network for CT Metal Artifact Reduction''
 paper link： https://arxiv.org/pdf/2109.05298.pdf
 """
@@ -30,7 +30,6 @@ parser.add_argument('--workers', type=int, help='number of data loading workers'
 parser.add_argument('--batchSize', type=int, default=1, help='input batch size')
 parser.add_argument('--patchSize', type=int, default=416, help='the height / width of the input image to network')
 parser.add_argument('--niter', type=int, default=100, help='total number of training epochs')
-parser.add_argument('--batchnum', type=int, default=1000, help='batchsize*batchnum=1000 for randomly selecting 1000 imag pairs at every iteration')
 parser.add_argument('--num_channel', type=int, default=32, help='the number of dual channels')  # refer to https://github.com/hongwang01/RCDNet for the channel concatenation strategy
 parser.add_argument('--T', type=int, default=4, help='the number of ResBlocks in every ProxNet')
 parser.add_argument('--S', type=int, default=10, help='the number of total iterative stages')
@@ -45,14 +44,19 @@ parser.add_argument('--alpha', type=float, default=0.5, help='initialization for
 parser.add_argument('--gamma', type=float, default=1e-1, help='hyper-parameter for balancing different loss items')
 opt = parser.parse_args()
 
-
 # create path
+
+try:
+    os.makedirs(opt.log_dir)
+except OSError:
+    pass
 try:
     os.makedirs(opt.model_dir)
 except OSError:
     pass
-
 cudnn.benchmark = True
+
+
 def train_model(net,optimizer, scheduler,datasets):
     data_loader = DataLoader(datasets, batch_size=opt.batchSize, shuffle=True, num_workers=int(opt.workers),
                              pin_memory=True)
@@ -71,12 +75,8 @@ def train_model(net,optimizer, scheduler,datasets):
             net.train()
             optimizer.zero_grad()
             ListX, ListS, ListYS= net(Xma, XLI, mask, Sma, SLI, Tr)
-            loss_l2YSmid=0
-            loss_l2Xmid = 0
-            iter = opt.S -1
-            for j in range(iter):
-                loss_l2YSmid = loss_l2YSmid + 0.1 * F.mse_loss(ListYS[j], Sgt)
-                loss_l2Xmid = loss_l2Xmid + 0.1 * F.mse_loss(ListX[j] * (1 - mask), Xgt * (1 - mask))
+            loss_l2YSmid = 0.1 * F.mse_loss(ListYS[opt.S -2], Sgt)
+            loss_l2Xmid = 0.1 * F.mse_loss(ListX[opt.S -2] * (1 - mask), Xgt * (1 - mask))
             loss_l2YSf = F.mse_loss(ListYS[-1], Sgt)
             loss_l2Xf = F.mse_loss(ListX[-1] * (1 - mask), Xgt * (1 - mask))
             loss_l2YS = loss_l2YSf + loss_l2YSmid
@@ -98,7 +98,7 @@ def train_model(net,optimizer, scheduler,datasets):
         print('-' * 100)
         scheduler.step()
         # save model
-        torch.save(net.state_dict(), os.path.join(opt.model_dir, 'net_latest.pt'))
+        torch.save(net.state_dict(), os.path.join(opt.model_dir, 'InDuDoNet_latest.pt'))
         if epoch % 10 == 0:
             # save model
             model_prefix = 'model_'
@@ -107,7 +107,7 @@ def train_model(net,optimizer, scheduler,datasets):
                 'epoch': epoch + 1,
                 'step': step + 1,
             }, save_path_model)
-            torch.save(net.state_dict(), os.path.join(opt.model_dir, 'net_%d.pt' % (epoch + 1)))
+            torch.save(net.state_dict(), os.path.join(opt.model_dir, 'InDuDoNet_%d.pt' % (epoch + 1)))
         toc = time.time()
         print('This epoch take time {:.2f}'.format(toc - tic))
     writer.close()
@@ -127,11 +127,12 @@ if __name__ == '__main__':
     for _ in range(opt.resume):
         scheduler.step()
     if opt.resume:
-        net.load_state_dict(torch.load(os.path.join(opt.model_dir, 'net_%d.pt' % (opt.resume+1))))
+        net.load_state_dict(torch.load(os.path.join(opt.model_dir, 'InDuDoNet_%d.pt' % (opt.resume))))
         print('loaded checkpoints, epoch{:d}'.format(opt.resume))
     # load dataset
     train_mask = np.load(os.path.join(opt.data_path, 'trainmask.npy'))
-    train_dataset = MARTrainDataset(opt.data_path, opt.patchSize, opt.batchSize * opt.batchnum, train_mask)
+    train_dataset = MARTrainDataset(opt.data_path, opt.patchSize, train_mask)
+
     # train model
     train_model(net, optimizer, scheduler,train_dataset)
 
