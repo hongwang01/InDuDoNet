@@ -58,14 +58,14 @@ GPU NVIDIA Tesla V100-SMX2
  
 ## Training
 ```
-CUDA_VISIBLE_DEVICES=0 python train.py --data_path "deeplesion/train/" --batchnum 2
+CUDA_VISIBLE_DEVICES=0 python train.py --data_path "deeplesion/train/" --log_dir "logs" --model_dir "pretrained_model/"
 ```
-*For the demo, the hyper-parameter batchnum is set as 2. Please change it according to your own training set.*
+
 ## Testing
 
 ### For DeepLesion
 ```
-CUDA_VISIBLE_DEVICES=0 python test_deeplesion.py --data_path "deeplesion/test/" --model_dir "models/" --save_path "results/deeplesion/" 
+CUDA_VISIBLE_DEVICES=0 python test_deeplesion.py --data_path deeplesion/test/ --model_dir "pretrained_model/InDuDoNet_latest.pt" --save_path "results/deeplesion/"
 ```
 ### For CLINIC-metal
 ```
