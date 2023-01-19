@@ -69,7 +69,7 @@ def main():
     # Build model
     print('Loading model ...\n')
     net = InDuDoNet(opt).cuda()
-    net.load_state_dict(torch.load(os.path.join(opt.model_dir, 'net_latest.pt')))
+    net.load_state_dict(torch.load(os.path.join(opt.model_dir)))
     net.eval()
     print('--------------load---------------all----------------nii-------------')
     allXma, allXLI, allM, allSma, allSLI, allTr, allaffine, allfilename = clinic_input_data(opt.data_path)
