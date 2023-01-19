@@ -69,7 +69,7 @@ CUDA_VISIBLE_DEVICES=0 python test_deeplesion.py --data_path deeplesion/test/ --
 ```
 ### For CLINIC-metal
 ```
-CUDA_VISIBLE_DEVICES=0 python test_clinic.py --data_path "CLINIC_metal/test/" --model_dir "models/" --save_path "results/CLINIC_metal/"
+CUDA_VISIBLE_DEVICES=0 python test_clinic.py --data_path "CLINIC_metal/test/" --model_dir "pretrained_model/InDuDoNet_latest.pt" --save_path "results/CLINIC_metal/"
 ```
 ## Model Verification
 <div  align="center"><img src="figs/visualization.png" height="100%" width="100%" alt=""/></div>
