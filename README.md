@@ -52,7 +52,7 @@ GPU NVIDIA Tesla V100-SMX2
 ```
 ## Benchmark Dataset
 
-**DeepLesion:** Download the [DeepLesion dataset](https://nihcc.app.box.com/v/DeepLesion).  We use `python` to synthesize the metal-corrupted ones by following the simulation protocol in [1]. The imaging parameters are included in `bulid_geometory.py`. Please refer to [SynDeepLesion](https://github.com/hongwang01/SynDeepLesion) for downloading the synthesized DeepLesion dataset.
+**DeepLesion:** Download the [DeepLesion dataset](https://nihcc.app.box.com/v/DeepLesion).  We use `python` to synthesize the metal-corrupted ones by following the simulation protocol in [1]. The imaging parameters are included in `bulid_geometory.py`. **Please refer to [SynDeepLesion](https://github.com/hongwang01/SynDeepLesion) for downloading the synthesized DeepLesion dataset。**
 
 **CLINIC-metal:** Download the clinical metal-corrupted [CLINIC-metal dataset](https://github.com/ICT-MIRACLE-lab/CTPelvic1K) with mutli-bone segmentation. In our experiments, we only adopt the testing set with 14 volumes for evaluation.
  
