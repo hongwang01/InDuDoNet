@@ -82,7 +82,7 @@ CUDA_VISIBLE_DEVICES=0 python test_clinic.py --data_path "CLINIC_metal/test/" --
 <div  align="center"><img src="figs/clinic.png" height="100%" width="100%" alt=""/></div>
 
 ## Metric
-[PSNR/SSIM](https://github.com/hongwang01/RCDNet/tree/master/Performance_evaluation) 
+Please refer to [OSCNet](https://github.com/hongwang01/OSCNet/tree/main/metric)
 
 ## Acknowledgement
 The authors would like to thank [Dr. Lequan Yu](https://yulequan.github.io/) for providing the code `bulid_geometory.py` released in this repository.
