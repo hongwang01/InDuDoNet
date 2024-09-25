@@ -38,6 +38,7 @@ munkres==1.1.4
 natsort==8.4.0
 networkx==3.2.1
 numba==0.59.1
+numpy==1.26.3
 nvidia-cublas-cu11==11.10.3.66
 nvidia-cuda-nvrtc-cu11==11.7.99
 nvidia-cuda-runtime-cu11==11.7.99
